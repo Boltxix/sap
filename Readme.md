@@ -1,17 +1,17 @@
-## Instructions
+## Installation
 
-To run this code, follow these steps:
-
-1. Creaete a Docker netowork using the following command:
-
-docker network create my-network
-
-2. Run the MySQL Docker image with the name "db" and root password of "my-secret-password" using the following command:
-
-docker run -d --name db --network my-network -e MYSQL_ROOT_PASSWORD=my-secret-password mysql:latest
-
-3. Run the phpMyAdmin Docker image on the network previously created, mapping a port of your choice (e.g. 8080) to port 80 of the container using the following command:
-
-docker run -d --name phpmyadmin --network my-network -p 8080:80 phpmyadmin/phpmyadmin
-
-Note: Replace "8080" with the port of your choice.
+1. Install Docker by following the instructions in the [official documentation](https://docs.docker.com/get-docker/).
+2. Clone the repository and navigate to the project directory.
+3. Run the following command to create a Docker network:
+	```sql
+	docker network create my-network
+	```
+4. Run the following command to start a MySQL Docker container:
+	```sql
+	docker run -d --name db -e MYSQL_ROOT_PASSWORD=my-secret-password mysql:latest
+	```
+5. Run the following command to start a phpMyAdmin Docker container:
+	```sql
+	docker run -d --name phpmyadmin -p 8080:80 --network my-network phpmyadmin/phpmyadmin
+	```
+6.  Access phpMyAdmin by opening a web browser and navigating to `http://localhost:8080`. Log in using the MySQL root username and password.
